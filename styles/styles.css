@@ -16,6 +16,10 @@ h1 {
     color: #c5e5ff;
 }
 
+p {
+    overflow-wrap: break-word;
+}
+
 .container {
     position: relative;
     width: 100%;
@@ -40,7 +44,7 @@ h1 {
     color: #5a5a5a;
     width: 75%;
     margin: auto;
-    padding: 10px 2px;
+    padding: 10px 20px;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: #673AB7 2px 3px 7px;
