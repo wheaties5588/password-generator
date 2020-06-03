@@ -13,6 +13,8 @@ body {
 }
 
 h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
     color: #c5e5ff;
 }
 
@@ -36,6 +38,8 @@ p {
 }
 
 .app-header {
+    font-size: 20px;
+    letter-spacing: 1px;
     margin: auto auto 25px auto;
 }
 
@@ -66,4 +70,26 @@ p {
 
 .generateBtn:hover {
     background-color: #185e7d;
+}
+
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 25px;
+    }
+    
+    .app-div {
+        padding: 15px;
+        border-radius: 0px;
+    }
+
+    .app-header {
+        font-size: 18px;
+        margin: auto auto 15px auto;
+    }
+
+    .password-output {
+        width: 100%;
+        padding: 10px 10px;
+    }
 }
