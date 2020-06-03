@@ -2,26 +2,21 @@
 var btn = document.getElementById("generateBtn");
 var output = document.getElementById("passOutput");
 
-//Create arrays of the different options of characters allowed in password and put in allChars object
+//Object of different character options with they arrays and questions
 //Alphabetical characters - Numbers - Special Characters
-
 var charOptions = {
     lower: {
-        name: "lower",
         question: "Would you like to include lowecase letters?",
         arr: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     },
     upper: {
-        name: "upper",
         question: "Would you like to include uppercase letters?",
     }, 
     numbs: {
-        name: "numbers",
         question: "Would you like to include numbers?",
         arr: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     }, 
     special:{
-        name: "special",
         question: "Would you like to include special characters?",
         arr: ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
     }
