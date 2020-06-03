@@ -2,15 +2,16 @@
 var btn = document.getElementById("generateBtn");
 var output = document.getElementById("passOutput");
 
-//Create arrays of the different options of characters allowed in password
-//Alphabetical characters
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+//Create arrays of the different options of characters allowed in password and put in allChars object
+//Alphabetical characters - Numbers - Special Characters
 
-//Numbers
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var allCharsObj = {
+    alphabet: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"], 
+    numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    specialChars: ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
+}
 
-//Special Characters
-var specialChars = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+console.log(allCharsObj);
 
 
 //Event listener for button on click
@@ -19,14 +20,17 @@ btn.addEventListener("click", function() {
 
     //pass in lenth as a parameter to dictate arr.length
     var pass = createPassword(length);
-
     
-    var p = document.createElement("p");
-    p.textContent = pass;
-    console.log(p);
-    output.innerHTML = "";
-    output.appendChild(p);
+    //Update DOM with new password
+    updatePassField(pass);
 })
+
+
+
+//function to put all character lists into an array
+var charArrCombine = function() {
+
+}
 
 
 //functions for prompts
@@ -47,30 +51,36 @@ var lengthPrompt = function() {
 
 //Create password function
 var createPassword = function(length) {
-    var fullPassArr = [];
+    var passArr = [];
     var finalPassword = "";
     for (let i = 0; i < length; i++){
-        var num = Math.floor(Math.random() * 10);
-        fullPassArr.push(num);
+        var char = allCharsObj.alphabet[Math.floor(Math.random() * allCharsObj.alphabet.length)];
+        passArr.push(char);
     }
     
     for (let i = 0; i < length; i++) {
-        finalPassword += fullPassArr[i];
+        finalPassword += passArr[i];
     }
 
-    console.log(fullPassArr.length);
+    console.log(passArr.length);
     return finalPassword;  
 }
 
 
-
+//Update DOM Function
+var updatePassField = function(pass) {
+    var p = document.createElement("p");
+    p.textContent = pass;
+    console.log(p);
+    output.innerHTML = "";
+    output.appendChild(p);
+}
 
 
 
 //Output field manipulation
 //Clear the field
 //Append the new pasword -- as a child?
-
 
 
 
