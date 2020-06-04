@@ -9,11 +9,11 @@ An app that takes in user criteria for a password, generates a password based on
 ​
 ## Features
 ​
-Generate a random password from length 8-128 characters
+Generate a random password from length 8-128 characters.  
 ​
-Completely randomized
+Completely randomized.  
 ​
-Choose whether or not to include lowercase characters, uppercase characters, special characters, or numbers.
+Choose whether or not to include lowercase characters, uppercase characters, special characters, or numbers.  
 ​
 ## Known Bugs
 ​
@@ -25,9 +25,9 @@ matt.wieciech@gmail.com
 ​
 ## Technologies Used
 ​
-##### Javascript
-##### HTML5
-##### CSS
+Javascript  
+HTML5  
+CSS  
 ​
 ## Contribution Guidlines 
 ​
