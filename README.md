@@ -25,9 +25,9 @@ matt.wieciech@gmail.com
 ​
 ## Technologies Used
 ​
-Javascript
-HTML5
-CSS
+##### Javascript
+##### HTML5
+##### CSS
 ​
 ## Contribution Guidlines 
 ​
