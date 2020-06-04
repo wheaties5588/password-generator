@@ -33,7 +33,7 @@ p {
     position: relative;
     width:100%;
     background-color: #e4e4e4;
-    padding: 25px;
+    padding: 35px 25px;
     border-radius: 3px;
 }
 
@@ -71,6 +71,14 @@ p {
 .generateBtn:hover {
     background-color: #185e7d;
 }
+.created-by {
+    font-size: 10px;
+    position: absolute;
+    margin: auto;
+    padding: 5px;
+    bottom: 0;
+    right: 0;
+}
 
 
 @media screen and (max-width: 767px) {
@@ -79,7 +87,7 @@ p {
     }
     
     .app-div {
-        padding: 15px;
+        padding: 35px 10px;
         border-radius: 0px;
     }
 
