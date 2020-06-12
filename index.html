@@ -18,6 +18,39 @@
 
         <div class="app-div">
             <h2 class="app-header">Generate a random password:</h2>
+
+            <!--Extra add in: check boxes for options-->
+            <form id="optionsForm" class="options-form" action="">
+                <div>
+                    <label for="length">Enter length of password (8-128 characters):</label>
+                    <input type="number" id="length" value="">
+                </div>
+
+                <div>
+                    <label for="">Check whether you would like to include the following:</label>
+                </div>
+
+                <div>
+                    <label for="lowerCase">Lowercase Characters:</label>
+                    <input type="checkbox" id="lowerCase">
+                </div>
+
+                <div>
+                    <label for="upperCase">Uppercase Characters:</label>
+                    <input type="checkbox" id="upperCase">
+                </div>
+
+                <div>
+                    <label for="numbers">Numbers:</label>
+                    <input type="checkbox" id="numbers">
+                </div>
+
+                <div>
+                    <label for="specialChars">Special Characters:</label>
+                    <input type="checkbox" id="specialChars">
+                </div>
+                
+            </form>
         
             <div class="output-div">
                 <div id="passOutput" class="password-output">
@@ -27,6 +60,8 @@
 
             <div class="button-div">
                 <button id="generateBtn" class="generateBtn" >Generate your password</button>
+
+                <button id="copyBtn" class="generateBtn" >Copy to clipboard</button>
             </div>
 
             <p class="created-by">Built by Matthew Wieciech | 2020</p>

@@ -1,23 +1,22 @@
 //Grab elements needed - button, output field
 var btn = document.getElementById("generateBtn");
+var copyBtn = document.getElementById("copyBtn");
 var output = document.getElementById("passOutput");
+var length;
+var pass;
 
 //Object of different character options with they arrays and questions
 //Alphabetical characters - Numbers - Special Characters
 var charOptions = {
     lower: {
-        question: "Would you like to include lowecase letters?",
         arr: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     },
     upper: {
-        question: "Would you like to include uppercase letters?",
     }, 
     numbs: {
-        question: "Would you like to include numbers?",
         arr: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     }, 
     special:{
-        question: "Would you like to include special characters?",
         arr: ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
     }
 };
@@ -27,33 +26,48 @@ var charOptions = {
 
 //Event listener for button on click
 btn.addEventListener("click", function() {
-    var length = lengthPrompt();
+    //Retrieve elements from form
 
-    //pass in lenth as a parameter to dictate arr.length
-    var pass = createPassword(length);
+    length = lengthValidate(length);
 
-    //Update DOM with new password
-    updatePassField(pass);
+    if (length !== false) {
+        //pass in lenth as a parameter to dictate arr.length
+        pass = createPassword(length);
+
+        //Update DOM with new password
+        updatePassField(pass);
+
+        //Change copy to clipboard button text back to original
+        copyBtn.innerText = "Copy to clipboard";
+    }
 })
 
 //Password length function
-var lengthPrompt = function() {
-    var passLength = prompt("How long would you like your password to be (between 8-128 characters)?");
+var lengthValidate = function() {
+    var passLength = document.getElementById("length").value;
 
-    while (isNaN(passLength) || passLength < 8 || passLength > 128 || passLength === "") {
-        passLength = prompt("Please enter a number from 8-128:");
+    if (isNaN(passLength) || passLength < 8 || passLength > 128 || passLength === "") {
+        passLength = false;
+        alert("Please enter a number from 8-128:");
     }
     return passLength;
 }
 
+
 //Create password function
 var createPassword = function(length) {
+    //Get elements from form
+    charOptions.lower.check = document.getElementById("lowerCase").checked;
+    charOptions.upper.check = document.getElementById("upperCase").checked;
+    charOptions.numbs.check = document.getElementById("numbers").checked;
+    charOptions.special.check = document.getElementById("specialChars").checked;
     var finalPassword = "";
     var allCharsArr = [];
 
+
     //Loop through all character options and push the allowed ones to an array
     for (let x = 0; x < Object.keys(charOptions).length; x++) {
-        var include = confirm(Object.values(charOptions)[x].question);
+        var include = Object.values(charOptions)[x].check;
 
         if (include) {
             allCharsArr.push(Object.values(charOptions)[x].arr);
@@ -63,7 +77,7 @@ var createPassword = function(length) {
     //Create the final password string
     for (let i = 0; i < length; i++){
 
-        //Random property from the built allCharsObj object
+        //Random property from the built allCharsArr array
         var randomProp = (allCharsArr[Math.floor(Math.random() * allCharsArr.length)]);
 
         //Pulls a ransom value from the random propery selected
@@ -80,11 +94,30 @@ var createPassword = function(length) {
 //Update DOM Function
 var updatePassField = function(pass) {
     var p = document.createElement("p");
+    p.id = "passText"
     p.textContent = pass;
     output.innerHTML = "";
     output.appendChild(p);
 }
 
+
+//Copy to clipboard event listener and function
+copyBtn.addEventListener("click", copyToClipboard);
+
+function copyToClipboard() {
+    var passText = document.getElementById("passText").innerText;
+    var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = passText;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+
+    if (passText !== null || passText !== ""){
+        copyBtn.innerText = "Copied!";
+    }
+}
+
 //Extra stuff:
 // Copy to clipboard
-// Instead of prompts, create fields -- radio buttons or check boxes for options
+// Instead of prompts, create fields -- check boxes for options - complete
